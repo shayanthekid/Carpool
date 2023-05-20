@@ -1,0 +1,50 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-carpool-dev-115157-authRole",
+      "UnauthRoleArn": "arn:aws:iam::529836752143:role/amplify-carpool-dev-115157-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::529836752143:role/amplify-carpool-dev-115157-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-carpool-dev-115157-deployment",
+      "UnauthRoleName": "amplify-carpool-dev-115157-unauthRole",
+      "StackName": "amplify-carpool-dev-115157",
+      "StackId": "arn:aws:cloudformation:us-east-1:529836752143:stack/amplify-carpool-dev-115157/9ff19f80-f6d6-11ed-876c-0a730f7018d5",
+      "AmplifyAppId": "d3v96bigp48sj9"
+    },
+    "categories": {
+      "function": {
+        "GetAllCars": {
+          "deploymentBucketName": "amplify-carpool-dev-115157-deployment",
+          "s3Key": "amplify-builds/GetAllCars-6d7a564d65687a4e307a-build.zip"
+        }
+      }
+    }
+  },
+  "sajiddesk": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-carpool-sajiddesk-185911-authRole",
+      "UnauthRoleArn": "arn:aws:iam::529836752143:role/amplify-carpool-sajiddesk-185911-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::529836752143:role/amplify-carpool-sajiddesk-185911-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-carpool-sajiddesk-185911-deployment",
+      "UnauthRoleName": "amplify-carpool-sajiddesk-185911-unauthRole",
+      "StackName": "amplify-carpool-sajiddesk-185911",
+      "StackId": "arn:aws:cloudformation:us-east-1:529836752143:stack/amplify-carpool-sajiddesk-185911/2cd6a590-f712-11ed-86c3-0a1d38663357",
+      "AmplifyAppId": "d3v96bigp48sj9"
+    },
+    "categories": {
+      "function": {
+        "GetAllCars": {
+          "deploymentBucketName": "amplify-carpool-sajiddesk-185911-deployment",
+          "s3Key": "amplify-builds/GetAllCars-6d7a564d65687a4e307a-build.zip"
+        }
+      },
+      "auth": {
+        "carpool8ab11669": {}
+      },
+      "storage": {
+        "carimages": {}
+      }
+    }
+  }
+}
