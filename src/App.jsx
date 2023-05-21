@@ -1,6 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { withAuthenticator } from '@aws-amplify/ui-react';
+// import { withAuthenticator } from '@aws-amplify/ui-react';
 import AdminLogin from './login';
 import CreateCar from './admin/createCar';
 
@@ -27,4 +27,5 @@ function App() {
   )
 }
 
-export default  withAuthenticator(App);
+// export default  withAuthenticator(App);
+export default  (App);

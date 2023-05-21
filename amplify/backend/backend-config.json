@@ -30,6 +30,11 @@
       "build": true,
       "providerPlugin": "awscloudformation",
       "service": "Lambda"
+    },
+    "createcar": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
     }
   },
   "parameters": {
@@ -46,6 +51,22 @@
         {
           "category": "function",
           "resourceName": "GetAllCars"
+        }
+      ]
+    },
+    "AMPLIFY_function_createcar_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "createcar"
+        }
+      ]
+    },
+    "AMPLIFY_function_createcar_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "createcar"
         }
       ]
     }
