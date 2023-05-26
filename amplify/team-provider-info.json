@@ -41,6 +41,10 @@
         "createcar": {
           "deploymentBucketName": "amplify-carpool-sajiddesk-185911-deployment",
           "s3Key": "amplify-builds/createcar-683557554364674c5371-build.zip"
+        },
+        "enterCarDetails": {
+          "deploymentBucketName": "amplify-carpool-sajiddesk-185911-deployment",
+          "s3Key": "amplify-builds/enterCarDetails-65752f435838584e3139-build.zip"
         }
       },
       "auth": {
