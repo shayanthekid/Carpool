@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { v4 as uuidv4 } from 'uuid';
+import CarList from './CarList';
 
 const CreateCar = () => {
   const [carName, setCarName] = useState('');
@@ -191,6 +192,9 @@ const CreateCar = () => {
 
         <input type="submit" value="Submit" />
       </form>
+
+      <CarList layout="table" />
+
     </div>
   );
 };

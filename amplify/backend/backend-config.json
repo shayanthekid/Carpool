@@ -26,6 +26,11 @@
     }
   },
   "function": {
+    "DeleteCarRecord": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    },
     "GetAllCars": {
       "build": true,
       "providerPlugin": "awscloudformation",
@@ -43,6 +48,22 @@
     }
   },
   "parameters": {
+    "AMPLIFY_function_DeleteCarRecord_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "DeleteCarRecord"
+        }
+      ]
+    },
+    "AMPLIFY_function_DeleteCarRecord_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "DeleteCarRecord"
+        }
+      ]
+    },
     "AMPLIFY_function_GetAllCars_deploymentBucketName": {
       "usedBy": [
         {
