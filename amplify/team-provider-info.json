@@ -36,7 +36,7 @@
       "function": {
         "GetAllCars": {
           "deploymentBucketName": "amplify-carpool-sajiddesk-185911-deployment",
-          "s3Key": "amplify-builds/GetAllCars-33626b71356d65643053-build.zip"
+          "s3Key": "amplify-builds/GetAllCars-6952526b6e455a6e7442-build.zip"
         },
         "createcar": {
           "deploymentBucketName": "amplify-carpool-sajiddesk-185911-deployment",
@@ -44,11 +44,11 @@
         },
         "enterCarDetails": {
           "deploymentBucketName": "amplify-carpool-sajiddesk-185911-deployment",
-          "s3Key": "amplify-builds/enterCarDetails-2b427664375848345979-build.zip"
+          "s3Key": "amplify-builds/enterCarDetails-333769324b3578434268-build.zip"
         },
         "DeleteCarRecord": {
           "deploymentBucketName": "amplify-carpool-sajiddesk-185911-deployment",
-          "s3Key": "amplify-builds/DeleteCarRecord-4c76312b2b345844456c-build.zip"
+          "s3Key": "amplify-builds/DeleteCarRecord-6d43614f4d4952585479-build.zip"
         }
       },
       "auth": {

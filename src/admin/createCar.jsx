@@ -59,7 +59,8 @@ const CreateCar = () => {
       fileReader.onload = async () => {
         const binaryData = fileReader.result;
         const fileName = `${uuidv4()}.${carImage.name.split('.').pop()}`;
-        const car_ID = parseInt(uuidv4().replace(/-/g, ''), 16);
+        const id = uuidv4.v4();
+         
 
         const response = await axios.put(`https://w0a5xhvof8.execute-api.us-east-1.amazonaws.com/desk/carstest123/${fileName}`, carImage, {
           headers: {
@@ -73,7 +74,7 @@ const CreateCar = () => {
         // Prepare car details to be sent to the Lambda function
         const carData = {
           car_Name: carName,
-          car_ID: car_ID,
+          id: id,
           year: year,
           price: price,
           seatLayout: seatLayout,

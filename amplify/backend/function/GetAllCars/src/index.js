@@ -26,7 +26,7 @@ exports.handler = async (event) => {
 
     // Rest of your code to retrieve cars from DynamoDB
     const params = {
-        TableName: 'carpool',
+        TableName: 'carpool2',
     };
 
     try {

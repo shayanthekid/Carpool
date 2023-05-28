@@ -14,7 +14,7 @@ exports.handler = async (event) => {
 
         const params = {
 
-            TableName: 'carpool',
+            TableName: 'carpool2',
             Item: Car
         };
         await dynamoDB.put(params).promise();

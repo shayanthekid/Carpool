@@ -1,6 +1,8 @@
 
 
 const AWS = require('aws-sdk');
+const dynamodb = new AWS.DynamoDB.DocumentClient();
+
 /**
 
  * @type {import('@types/aws-lambda').APIGatewayProxyHandler}
@@ -8,31 +10,34 @@ const AWS = require('aws-sdk');
  */
 exports.handler = async (event, context, callback) => {
 
-     const dynamodb = new AWS.DynamoDB.DocumentClient();
 
     // const { Id } = JSON.parse(event.body);
 
     const reqParams = event.queryStringParameters;
 
-    const car_Name = reqParams["car_Name"];
+    const id = reqParams["id"] || '';
+    // const car_ID = reqParams["car_ID"] || '';
     const params = {
 
-        TableName: 'carpool',
+        TableName: 'carpool2',
         Key: {
-            car_Name: car_Name,
+            id: id,
+         
+     
         },
+        ConditionExpression: 'attribute_exists(id)'
 
     };
     try {
 
-        await dynamodb.delete(params).promise();
+         await dynamodb.delete(params).promise();
       
         const response = {
             statusCode: 200,
             headers: {
                 "Access-Control-Allow-Origin": "*"
             },
-            body: JSON.stringify("Record deleted successfully")
+            body: JSON.stringify(id)
         };
         callback(null, response);
 
@@ -42,7 +47,7 @@ exports.handler = async (event, context, callback) => {
 
             statusCode: 500,
 
-            body: JSON.stringify({ message: 'Failed to delete record' })
+            body: JSON.stringify({ message: 'Failed to delete record', error})
 
         };
 
