@@ -64,6 +64,7 @@ const CreateCar = () => {
 
         const response = await axios.put(`https://w0a5xhvof8.execute-api.us-east-1.amazonaws.com/desk/carstest123/${fileName}`, carImage, {
           headers: {
+            
             'Content-Type': carImage.type,
           },
         });

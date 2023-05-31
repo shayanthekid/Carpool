@@ -26,10 +26,14 @@ const CarList = ({ layout }) => {
             return updatedFields;
         });
     };
-    const handleDelete = async (carId) => {
+    const handleDelete = async (carId, carImageUrl) => {
         try {
+            const imageName = carImageUrl.split('/').pop();
             await axios.delete(`https://w0a5xhvof8.execute-api.us-east-1.amazonaws.com/desk/cars?id=${carId}`);
-        
+
+            await axios.delete(`https://w0a5xhvof8.execute-api.us-east-1.amazonaws.com/desk/carstest123/${imageName}`);
+            
+            
             setCars((prevCars) => prevCars.filter((car) => car.id !== carId));
             console.log('Car record deleted successfully');
         } catch (error) {
@@ -68,6 +72,7 @@ const CarList = ({ layout }) => {
                             <th>Interior Color</th>
                             <th>Wheels</th>
                             <th>Actions</th>
+                            <th>Image</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -197,11 +202,27 @@ const CarList = ({ layout }) => {
                                 </td>
                                 <td>
                                     {editableFields[car.id] ? (
+                                        <input
+                                            type="text"
+                                            value={car.wheels}
+                                            onChange={(e) => {
+                                                // Update the input value in the state
+                                                setCars((prevState) =>
+                                                    prevState.map((c) => (c.id === car.id ? { ...c, wheels: e.target.value } : c))
+                                                );
+                                            }}
+                                        />
+                                    ) : (
+                                            <img src={car.carImageUrl} alt="" /> 
+                                    )}
+                                </td>
+                                <td>
+                                    {editableFields[car.id] ? (
                                         <button onClick={() => handleSave(car.id)}>Save</button>
                                     ) : (
                                         <div>
                                                 <button onClick={() => handleUpdate(car.id)}>Update</button>
-                                                <button onClick={() => handleDelete(car.id)}>Delete</button>
+                                                <button onClick={() => handleDelete(car.id, car.carImageUrl)}>Delete</button>
                                           </div>
                                     )}
                                 </td>
