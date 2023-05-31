@@ -14,13 +14,17 @@ const CreateCar = () => {
   const [keyFeatures, setKeyFeatures] = useState('');
   const [carImage, setCarImage] = useState(null);
   const [brand, setBrand] = useState(''); 
+  const [refreshCarList, setRefreshCarList] = useState(false);
 
   const handleCarNameChange = (e) => {
     setCarName(e.target.value);
   };
 
   const handleYearChange = (e) => {
-    setYear(e.target.value);
+    const inputYear = e.target.value;
+    // Remove non-numeric characters from the input
+    const validYear = inputYear.replace(/\D/g, '');
+    setYear(validYear);
   };
 
   const handlePriceChange = (e) => {
@@ -28,7 +32,10 @@ const CreateCar = () => {
   };
 
   const handleSeatLayoutChange = (e) => {
-    setSeatLayout(e.target.value);
+    const inputLayout = e.target.value;
+    // Validate seat layout to be either 2 or 4
+    const validLayout = ['2', '4'].includes(inputLayout) ? inputLayout : '';
+    setSeatLayout(validLayout);
   };
 
   const handleExteriorColorChange = (e) => {
@@ -40,7 +47,10 @@ const CreateCar = () => {
   };
 
   const handleWheelsChange = (e) => {
-    setWheels(e.target.value);
+    const inputWheels = e.target.value;
+    // Validate wheels to be either 2 or 4
+    const validWheels = ['2', '4'].includes(inputWheels) ? inputWheels : '';
+    setWheels(validWheels);
   };
 
   const handleKeyFeaturesChange = (e) => {
@@ -98,6 +108,18 @@ const CreateCar = () => {
       };
 
       fileReader.readAsArrayBuffer(carImage);
+      setRefreshCarList((prevRefresh) => !prevRefresh);
+
+      // Clear the form inputs after successful submission
+      setCarName('');
+      setYear('');
+      setPrice('');
+      setBrand('');
+      setSeatLayout('');
+      setExteriorColor('');
+      setInteriorColor('');
+      setWheels('');
+      setKeyFeatures('');
     } catch (error) {
       console.error(error);
       // Handle the error
@@ -125,6 +147,7 @@ const CreateCar = () => {
           id="year"
           value={year}
           onChange={handleYearChange}
+          pattern="[0-9]*" // Only allow numeric input
           required
         /><br /><br />
 
@@ -137,6 +160,7 @@ const CreateCar = () => {
           onChange={handlePriceChange}
           required
         /><br /><br />
+
         <label htmlFor="brand">Brand:</label>
         <select name="brand" id="brand" value={brand} onChange={handleBrandChange} required>
           <option value="">Select a brand</option>
@@ -152,45 +176,46 @@ const CreateCar = () => {
           <option value="Volkswagen">Volkswagen</option>
         </select>
         <br /><br />
+
         <label htmlFor="seat_layout">Seat Layout:</label>
-        <input
-          type="text"
-          name="seat_layout"
-          id="seat_layout"
-          value={seatLayout}
-          onChange={handleSeatLayoutChange}
-          required
-        /><br /><br />
+        <select name="seat_layout" id="seat_layout" value={seatLayout} onChange={handleSeatLayoutChange} required>
+          <option value="">Select seat layout</option>
+          <option value="2">2</option>
+          <option value="4">4</option>
+        </select>
+        <br /><br />
 
         <label htmlFor="exterior_color">Exterior Color:</label>
-        <input
-          type="text"
-          name="exterior_color"
-          id="exterior_color"
-          value={exteriorColor}
-          onChange={handleExteriorColorChange}
-          required
-        /><br /><br />
+        <select name="exterior_color" id="exterior_color" value={exteriorColor} onChange={handleExteriorColorChange} required>
+          <option value="">Select exterior color</option>
+          <option value="Red">Red</option>
+          <option value="Blue">Blue</option>
+          <option value="Black">Black</option>
+          <option value="White">White</option>
+          <option value="Silver">Silver</option>
+          {/* Add more popular car colors as options */}
+        </select>
+        <br /><br />
 
         <label htmlFor="interior_color">Interior Color:</label>
-        <input
-          type="text"
-          name="interior_color"
-          id="interior_color"
-          value={interiorColor}
-          onChange={handleInteriorColorChange}
-          required
-        /><br /><br />
+        <select name="interior_color" id="interior_color" value={interiorColor} onChange={handleInteriorColorChange} required>
+          <option value="">Select interior color</option>
+          <option value="Beige">Beige</option>
+          <option value="Black">Black</option>
+          <option value="Gray">Gray</option>
+          <option value="White">White</option>
+          <option value="Brown">Brown</option>
+          {/* Add more popular car colors as options */}
+        </select>
+        <br /><br />
 
         <label htmlFor="wheels">Wheels:</label>
-        <input
-          type="text"
-          name="wheels"
-          id="wheels"
-          value={wheels}
-          onChange={handleWheelsChange}
-          required
-        /><br /><br />
+        <select name="wheels" id="wheels" value={wheels} onChange={handleWheelsChange} required>
+          <option value="">Select number of wheels</option>
+          <option value="2">2</option>
+          <option value="4">4</option>
+        </select>
+        <br /><br />
 
         <label htmlFor="key_features">Key Features:</label>
         <input
@@ -214,7 +239,7 @@ const CreateCar = () => {
         <input type="submit" value="Submit" />
       </form>
 
-      <CarList layout="table" />
+      <CarList layout="car-card" refresh={refreshCarList} />
 
     </div>
   );
