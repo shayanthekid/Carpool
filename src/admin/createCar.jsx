@@ -59,7 +59,7 @@ const CreateCar = () => {
       fileReader.onload = async () => {
         const binaryData = fileReader.result;
         const fileName = `${uuidv4()}.${carImage.name.split('.').pop()}`;
-        const id = uuidv4.v4();
+        const id = uuidv4();
          
 
         const response = await axios.put(`https://w0a5xhvof8.execute-api.us-east-1.amazonaws.com/desk/carstest123/${fileName}`, carImage, {

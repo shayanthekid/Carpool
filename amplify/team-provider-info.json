@@ -48,7 +48,7 @@
         },
         "DeleteCarRecord": {
           "deploymentBucketName": "amplify-carpool-sajiddesk-185911-deployment",
-          "s3Key": "amplify-builds/DeleteCarRecord-6d43614f4d4952585479-build.zip"
+          "s3Key": "amplify-builds/DeleteCarRecord-6e414772754a3866684a-build.zip"
         }
       },
       "auth": {
