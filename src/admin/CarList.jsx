@@ -13,18 +13,29 @@ const CarList = ({ layout }) => {
         }));
     };
 
-    const handleSave = (carId) => {
-        // Perform save/update logic here
-        // You can access the updated field values from editableFields[carId]
+    const handleSave = async (car) => {
+        try {
+            // Get the updated field values from editableFields[car.id]
+            // const updatedFields = editableFields[car.id];
 
-        // After saving, remove the editable state for all fields
-        setEditableFields((prevState) => {
-            const updatedFields = { ...prevState };
-            Object.keys(updatedFields).forEach((key) => {
-                updatedFields[key] = false;
+            // Perform save/update logic here
+            await axios.put(`https://w0a5xhvof8.execute-api.us-east-1.amazonaws.com/desk/cars`, car);
+
+            // After saving, remove the editable state for all fields
+            setEditableFields((prevState) => {
+                const updatedFields = { ...prevState };
+                Object.keys(updatedFields).forEach((key) => {
+                    updatedFields[key] = false;
+                });
+                return updatedFields;
             });
-            return updatedFields;
-        });
+
+            console.log('Car record updated successfully');
+        } catch (error) {
+            // Handle the error
+            console.error('Failed to update car record:', error);
+            console.log(car);
+        }
     };
     const handleDelete = async (carId, carImageUrl) => {
         try {
@@ -65,14 +76,15 @@ const CarList = ({ layout }) => {
                     <thead>
                         <tr>
                             <th>Car Name</th>
+                            <th>Brand</th>
                             <th>Year</th>
                             <th>Price</th>
                             <th>Seat Layout</th>
                             <th>Exterior Color</th>
                             <th>Interior Color</th>
                             <th>Wheels</th>
-                            <th>Actions</th>
                             <th>Image</th>
+                            <th>Actions</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -96,6 +108,22 @@ const CarList = ({ layout }) => {
                                         />
                                     ) : (
                                         car.car_Name
+                                    )}
+                                </td>
+                                <td>
+                                    {editableFields[car.id] ? (
+                                        <input
+                                            type="text"
+                                            value={car.brand}
+                                            onChange={(e) => {
+                                                // Update the input value in the state
+                                                setCars((prevState) =>
+                                                    prevState.map((c) => (c.id === car.id ? { ...c, brand: e.target.value } : c))
+                                                );
+                                            }}
+                                        />
+                                    ) : (
+                                        car.brand
                                     )}
                                 </td>
                                 <td>
@@ -201,24 +229,11 @@ const CarList = ({ layout }) => {
                                     )}
                                 </td>
                                 <td>
-                                    {editableFields[car.id] ? (
-                                        <input
-                                            type="text"
-                                            value={car.wheels}
-                                            onChange={(e) => {
-                                                // Update the input value in the state
-                                                setCars((prevState) =>
-                                                    prevState.map((c) => (c.id === car.id ? { ...c, wheels: e.target.value } : c))
-                                                );
-                                            }}
-                                        />
-                                    ) : (
-                                            <img src={car.carImageUrl} alt="" /> 
-                                    )}
+                                    <img src={car.carImageUrl} alt="" /> 
                                 </td>
                                 <td>
                                     {editableFields[car.id] ? (
-                                        <button onClick={() => handleSave(car.id)}>Save</button>
+                                        <button onClick={() => handleSave(car)}>Save</button>
                                     ) : (
                                         <div>
                                                 <button onClick={() => handleUpdate(car.id)}>Update</button>

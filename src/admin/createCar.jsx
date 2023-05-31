@@ -13,6 +13,7 @@ const CreateCar = () => {
   const [wheels, setWheels] = useState('');
   const [keyFeatures, setKeyFeatures] = useState('');
   const [carImage, setCarImage] = useState(null);
+  const [brand, setBrand] = useState(''); 
 
   const handleCarNameChange = (e) => {
     setCarName(e.target.value);
@@ -51,6 +52,9 @@ const CreateCar = () => {
     setCarImage(file);
   };
 
+  const handleBrandChange = (e) => {
+    setBrand(e.target.value);
+  };
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -83,6 +87,7 @@ const CreateCar = () => {
           interiorColor: interiorColor,
           wheels: wheels,
           keyFeatures: keyFeatures, 
+          brand: brand,
           carImageUrl: `https://carstest123.s3.amazonaws.com/${fileName}`, // Fill this with the uploaded image URL
         };
 
@@ -132,7 +137,21 @@ const CreateCar = () => {
           onChange={handlePriceChange}
           required
         /><br /><br />
-
+        <label htmlFor="brand">Brand:</label>
+        <select name="brand" id="brand" value={brand} onChange={handleBrandChange} required>
+          <option value="">Select a brand</option>
+          <option value="Toyota">Toyota</option>
+          <option value="Honda">Honda</option>
+          <option value="Ford">Ford</option>
+          <option value="Chevrolet">Chevrolet</option>
+          <option value="BMW">BMW</option>
+          <option value="Mercedes-Benz">Mercedes-Benz</option>
+          <option value="Audi">Audi</option>
+          <option value="Nissan">Nissan</option>
+          <option value="Tesla">Tesla</option>
+          <option value="Volkswagen">Volkswagen</option>
+        </select>
+        <br /><br />
         <label htmlFor="seat_layout">Seat Layout:</label>
         <input
           type="text"

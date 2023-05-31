@@ -7,12 +7,13 @@ const dynamoDB = new AWS.DynamoDB.DocumentClient();
  */
 exports.handler = async (event) => {
     try {
-        const { id, car_Name, year, price, seatLayout, exteriorColor, interiorColor, wheels, carImageUrl, keyFeatures } = JSON.parse(event.body);
+        const { id, brand, car_Name, year, price, seatLayout, exteriorColor, interiorColor, wheels, carImageUrl, keyFeatures } = JSON.parse(event.body);
 
         const params = {
             TableName: 'carpool2',
             Item: {
                 id: id,
+                brand: brand,
                 car_Name: car_Name,
                 year: year,
                 price: price,
