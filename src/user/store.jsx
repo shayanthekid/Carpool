@@ -1,15 +1,16 @@
 import React, { Component } from 'react'
 import CarList from '../admin/CarList';
+import '../Store.css';
 
 export class Store extends Component {
   render() {
     return (
-      <div>
+    
 
+            <div className="store-page">
+                <CarList layout="list" />
+            </div>
 
-            <CarList layout="list"  />
-
-      </div>
     )
   }
 }

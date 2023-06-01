@@ -57,6 +57,8 @@ const AdminLogin = () => {
     
 
     return (
+        <div className="d-flex justify-content-center align-items-center vh-100 vw-100 bg-black">
+
         <Authenticator
             formFields={formFields}
             components={components}
@@ -69,7 +71,8 @@ const AdminLogin = () => {
                 </main>
             )}
         </Authenticator>
-    
+        </div>
+
     );
 };
 

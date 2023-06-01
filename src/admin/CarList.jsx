@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useMemo } from 'react';
 import PropTypes from 'prop-types';
 import axios from 'axios';
+import '../CarCard.css';
 
 const CarList = ({ layout }) => {
     const [cars, setCars] = useState([]);
@@ -89,7 +90,7 @@ const CarList = ({ layout }) => {
     if (layout === 'table') {
         return (
            
-                <div className="text-center">
+            <div className="text-center text-white">
                     <h1>Car List - Table View</h1>
                     <div className="table-responsive">
                         <table className="table table-striped">
@@ -359,7 +360,7 @@ const CarList = ({ layout }) => {
                     </div>
                 </div>
             </div>
-
+<br/>
             <div className="row">
                 <div className="col-md-10 offset-md-1">
                     <div className="d-flex flex-wrap justify-content-between">

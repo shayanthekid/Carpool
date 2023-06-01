@@ -127,13 +127,14 @@ const CreateCar = () => {
   };
 
   return (
-    <div className="container">
-      <h1 className="text-center">Add Car Details</h1>
+    <div className='vw-100 bg-black'>
+    <div className="container ">
+      <h1 className="text-center text-white">Add Car Details</h1>
       <div className="row justify-content-center">
         <div className="col-md-6">
       <form onSubmit={handleSubmit} encType="multipart/form-data">
         <div className="mb-3">
-          <label htmlFor="car_name" className="form-label">Car Name:</label>
+                <label htmlFor="car_name " className="form-label text-white">Car Name:</label>
           <input
             type="text"
             className="form-control"
@@ -147,7 +148,7 @@ const CreateCar = () => {
 
         <div className="row g-2">
           <div className="col-md">
-            <label htmlFor="year" className="form-label">Year:</label>
+                  <label htmlFor="year" className="form-label text-white">Year:</label>
             <input
               type="text"
               className="form-control"
@@ -160,7 +161,7 @@ const CreateCar = () => {
             />
           </div>
           <div className="col-md">
-            <label htmlFor="price" className="form-label">Price:</label>
+                  <label htmlFor="price" className="form-label text-white">Price:</label>
             <input
               type="text"
               className="form-control"
@@ -174,7 +175,7 @@ const CreateCar = () => {
         </div>
 
         <div className="mb-3">
-          <label htmlFor="brand" className="form-label">Brand:</label>
+                <label htmlFor="brand" className="form-label text-white">Brand:</label>
           <select className="form-select" name="brand" id="brand" value={brand} onChange={handleBrandChange} required>
             <option value="">Select a brand</option>
             <option value="Toyota">Toyota</option>
@@ -192,7 +193,7 @@ const CreateCar = () => {
 
         <div className="row g-2">
           <div className="col-md">
-            <label htmlFor="seat_layout" className="form-label">Seat Layout:</label>
+                  <label htmlFor="seat_layout" className="form-label text-white">Seat Layout:</label>
             <select className="form-select" name="seat_layout" id="seat_layout" value={seatLayout} onChange={handleSeatLayoutChange} required>
               <option value="">Select seat layout</option>
               <option value="2">2</option>
@@ -200,7 +201,7 @@ const CreateCar = () => {
             </select>
           </div>
           <div className="col-md">
-            <label htmlFor="exterior_color" className="form-label">Exterior Color:</label>
+                  <label htmlFor="exterior_color" className="form-label text-white">Exterior Color:</label>
             <select className="form-select" name="exterior_color" id="exterior_color" value={exteriorColor} onChange={handleExteriorColorChange} required>
               <option value="">Select exterior color</option>
               <option value="Red">Red</option>
@@ -215,7 +216,7 @@ const CreateCar = () => {
 
         <div className="row g-2">
           <div className="col-md">
-            <label htmlFor="interior_color" className="form-label">Interior Color:</label>
+                  <label htmlFor="interior_color" className="form-label text-white">Interior Color:</label>
             <select className="form-select" name="interior_color" id="interior_color" value={interiorColor} onChange={handleInteriorColorChange} required>
               <option value="">Select interior color</option>
               <option value="Beige">Beige</option>
@@ -227,7 +228,7 @@ const CreateCar = () => {
             </select>
           </div>
           <div className="col-md">
-            <label htmlFor="wheels" className="form-label">Wheels:</label>
+                  <label htmlFor="wheels" className="form-label text-white">Wheels:</label>
             <select className="form-select" name="wheels" id="wheels" value={wheels} onChange={handleWheelsChange} required>
               <option value="">Select number of wheels</option>
               <option value="2">2</option>
@@ -237,7 +238,7 @@ const CreateCar = () => {
         </div>
 
         <div className="mb-3">
-          <label htmlFor="key_features" className="form-label">Key Features:</label>
+                <label htmlFor="key_features" className="form-label text-white">Key Features:</label>
           <input
             type="text"
             className="form-control"
@@ -250,7 +251,7 @@ const CreateCar = () => {
         </div>
 
         <div className="mb-3">
-          <label htmlFor="car_image" className="form-label">Car Image:</label>
+                <label htmlFor="car_image" className="form-label text-white">Car Image:</label>
           <input
             type="file"
             className="form-control"
@@ -268,7 +269,7 @@ const CreateCar = () => {
       <CarList layout="table" refresh={refreshCarList} />
     </div>
 
-
+    </div>
   );
 };
 
