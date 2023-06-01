@@ -88,9 +88,11 @@ const CarList = ({ layout }) => {
 
     if (layout === 'table') {
         return (
-            <div>
-                <h1>Car List - Table View</h1>
-                <table>
+           
+                <div className="text-center">
+                    <h1>Car List - Table View</h1>
+                    <div className="table-responsive">
+                        <table className="table table-striped">
                     <thead>
                         <tr>
                             <th>Car Name</th>
@@ -109,12 +111,11 @@ const CarList = ({ layout }) => {
                     <tbody>
                         {cars.map((car) => (
                             <tr key={car.id}>
-                               
                                 <td>
-                                    
                                     {editableFields[car.id] ? (
                                         <input
                                             type="text"
+                                            className="form-control"
                                             value={car.car_Name}
                                             onChange={(e) => {
                                                 // Update the input value in the state
@@ -133,11 +134,14 @@ const CarList = ({ layout }) => {
                                     {editableFields[car.id] ? (
                                         <input
                                             type="text"
+                                            className="form-control"
                                             value={car.brand}
                                             onChange={(e) => {
                                                 // Update the input value in the state
                                                 setCars((prevState) =>
-                                                    prevState.map((c) => (c.id === car.id ? { ...c, brand: e.target.value } : c))
+                                                    prevState.map((c) =>
+                                                        c.id === car.id ? { ...c, brand: e.target.value } : c
+                                                    )
                                                 );
                                             }}
                                         />
@@ -149,11 +153,14 @@ const CarList = ({ layout }) => {
                                     {editableFields[car.id] ? (
                                         <input
                                             type="text"
+                                            className="form-control"
                                             value={car.year}
                                             onChange={(e) => {
                                                 // Update the input value in the state
                                                 setCars((prevState) =>
-                                                    prevState.map((c) => (c.id === car.id ? { ...c, year: e.target.value } : c))
+                                                    prevState.map((c) =>
+                                                        c.id === car.id ? { ...c, year: e.target.value } : c
+                                                    )
                                                 );
                                             }}
                                         />
@@ -165,11 +172,14 @@ const CarList = ({ layout }) => {
                                     {editableFields[car.id] ? (
                                         <input
                                             type="text"
+                                            className="form-control"
                                             value={car.price}
                                             onChange={(e) => {
                                                 // Update the input value in the state
                                                 setCars((prevState) =>
-                                                    prevState.map((c) => (c.id === car.id ? { ...c, price: e.target.value } : c))
+                                                    prevState.map((c) =>
+                                                        c.id === car.id ? { ...c, price: e.target.value } : c
+                                                    )
                                                 );
                                             }}
                                         />
@@ -181,6 +191,7 @@ const CarList = ({ layout }) => {
                                     {editableFields[car.id] ? (
                                         <input
                                             type="text"
+                                            className="form-control"
                                             value={car.seatLayout}
                                             onChange={(e) => {
                                                 // Update the input value in the state
@@ -199,6 +210,7 @@ const CarList = ({ layout }) => {
                                     {editableFields[car.id] ? (
                                         <input
                                             type="text"
+                                            className="form-control"
                                             value={car.exteriorColor}
                                             onChange={(e) => {
                                                 // Update the input value in the state
@@ -217,6 +229,7 @@ const CarList = ({ layout }) => {
                                     {editableFields[car.id] ? (
                                         <input
                                             type="text"
+                                            className="form-control"
                                             value={car.interiorColor}
                                             onChange={(e) => {
                                                 // Update the input value in the state
@@ -235,11 +248,14 @@ const CarList = ({ layout }) => {
                                     {editableFields[car.id] ? (
                                         <input
                                             type="text"
+                                            className="form-control"
                                             value={car.wheels}
                                             onChange={(e) => {
                                                 // Update the input value in the state
                                                 setCars((prevState) =>
-                                                    prevState.map((c) => (c.id === car.id ? { ...c, wheels: e.target.value } : c))
+                                                    prevState.map((c) =>
+                                                        c.id === car.id ? { ...c, wheels: e.target.value } : c
+                                                    )
                                                 );
                                             }}
                                         />
@@ -251,29 +267,38 @@ const CarList = ({ layout }) => {
                                     {editableFields[car.id] ? (
                                         <input
                                             type="text"
+                                            className="form-control"
                                             value={car.keyFeatures}
                                             onChange={(e) => {
                                                 // Update the input value in the state
                                                 setCars((prevState) =>
-                                                    prevState.map((c) => (c.id === car.id ? { ...c, keyFeatures: e.target.value } : c))
+                                                    prevState.map((c) =>
+                                                        c.id === car.id ? { ...c, keyFeatures: e.target.value } : c
+                                                    )
                                                 );
                                             }}
                                         />
                                     ) : (
-                                            car.keyFeatures
+                                        car.keyFeatures
                                     )}
                                 </td>
                                 <td>
-                                    <img src={car.carImageUrl} alt="" /> 
+                                    <img src={car.carImageUrl} alt="" className="img-thumbnail" style={{ width: '100px', height: '100px' }} />
                                 </td>
                                 <td>
                                     {editableFields[car.id] ? (
-                                        <button onClick={() => handleSave(car)}>Save</button>
+                                        <button className="btn btn-primary" onClick={() => handleSave(car)}>
+                                            Save
+                                        </button>
                                     ) : (
                                         <div>
-                                                <button onClick={() => handleUpdate(car.id)}>Update</button>
-                                                <button onClick={() => handleDelete(car.id, car.carImageUrl)}>Delete</button>
-                                          </div>
+                                            <button className="btn btn-secondary" onClick={() => handleUpdate(car.id)}>
+                                                Update
+                                            </button>
+                                            <button className="btn btn-danger" onClick={() => handleDelete(car.id, car.carImageUrl)}>
+                                                Delete
+                                            </button>
+                                        </div>
                                     )}
                                 </td>
                             </tr>
@@ -281,63 +306,87 @@ const CarList = ({ layout }) => {
                     </tbody>
                 </table>
             </div>
+            </div>
         );
     }
 
     // Default layout is list view
     return (
-        <div>
-            <h1>Car List - List View</h1>
-            <h1>Car List - Table View</h1>
-            <div>
-                <label>Brand:</label>
-                <select value={filterBrand} onChange={(e) => setFilterBrand(e.target.value)}>
-                    <option value="">All</option>
-                    <option value="Toyota">Toyota</option>
-                    <option value="Honda">Honda</option>
-                    <option value="Ford">Ford</option>
-                    <option value="Chevrolet">Chevrolet</option>
-                    <option value="BMW">BMW</option>
-                    <option value="Mercedes-Benz">Mercedes-Benz</option>
-                    <option value="Audi">Audi</option>
-                    <option value="Nissan">Nissan</option>
-                    <option value="Tesla">Tesla</option>
-                    <option value="Volkswagen">Volkswagen</option>
-                </select>
-            </div>
-            <div>
-                <label>Year Range:</label>
-                <input
-                    type="text"
-                    placeholder="Start Year"
-                    value={filterStartYear}
-                    onChange={(e) => setFilterStartYear(e.target.value)}
-                />
-                <input
-                    type="text"
-                    placeholder="End Year"
-                    value={filterEndYear}
-                    onChange={(e) => setFilterEndYear(e.target.value)}
-                />
-            </div>
-            {/* Render the list of cards */}
-            {filteredCars.map((car) => (
-                <div key={car.id} className="car-card">
-                    <h3>{car.car_Name}</h3>
-                    <p>Brand: {car.brand}</p>
-                    <p>Year: {car.year}</p>
-                    <p>Price: {car.price}</p>
-                    <p>Seat Layout: {car.seatLayout}</p>
-                    <p>Exterior Color: {car.exteriorColor}</p>
-                    <p>Interior Color: {car.interiorColor}</p>
-                    <p>Wheels: {car.wheels}</p>
-                    <p>Key Features: {car.keyFeatures}</p>
-                    <img src={car.carImageUrl} alt="Car" />
-                    {/* Display other car details */}
-                    {/* You can style and format the data as needed */}
+        <div className="text-center">
+            <h1>Store</h1>
+
+            <div className="row">
+                <div className="col-md-6 offset-md-3">
+                    <div className="form-group">
+                        <label>Brand:</label>
+                        <select className="form-control" value={filterBrand} onChange={(e) => setFilterBrand(e.target.value)}>
+                            <option value="">All</option>
+                            <option value="Toyota">Toyota</option>
+                            <option value="Honda">Honda</option>
+                            <option value="Ford">Ford</option>
+                            <option value="Chevrolet">Chevrolet</option>
+                            <option value="BMW">BMW</option>
+                            <option value="Mercedes-Benz">Mercedes-Benz</option>
+                            <option value="Audi">Audi</option>
+                            <option value="Nissan">Nissan</option>
+                            <option value="Tesla">Tesla</option>
+                            <option value="Volkswagen">Volkswagen</option>
+                        </select>
+                    </div>
                 </div>
-            ))}
+            </div>
+
+            <div className="row">
+                <div className="col-md-6 offset-md-3">
+                    <div className="form-group">
+                        <label>Year Range:</label>
+                        <div className="d-flex">
+                            <input
+                                type="text"
+                                className="form-control mr-2"
+                                placeholder="Start Year"
+                                value={filterStartYear}
+                                onChange={(e) => setFilterStartYear(e.target.value)}
+                            />
+                            <input
+                                type="text"
+                                className="form-control"
+                                placeholder="End Year"
+                                value={filterEndYear}
+                                onChange={(e) => setFilterEndYear(e.target.value)}
+                            />
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div className="row">
+                <div className="col-md-10 offset-md-1">
+                    <div className="d-flex flex-wrap justify-content-between">
+                        {filteredCars.map((car) => (
+                            <div key={car.id} className="card mb-4" style={{ width: 'calc(33.33% - 1rem)' }}>
+                                <img src={car.carImageUrl} className="card-img-top" alt="Car" style={{ objectFit: 'cover', height: '200px' }} />
+                                <div className="card-body">
+                                    <h5 className="card-title">{car.car_Name}</h5>
+                                    <p className="card-text">Brand: {car.brand}</p>
+                                    <p className="card-text">Year: {car.year}</p>
+                                    <p className="card-text">Price: {car.price}</p>
+                                    <p className="card-text">Seat Layout: {car.seatLayout}</p>
+                                    <p className="card-text">Exterior Color: {car.exteriorColor}</p>
+                                    <p className="card-text">Interior Color: {car.interiorColor}</p>
+                                    <p className="card-text">Wheels: {car.wheels}</p>
+                                    <p className="card-text">Key Features: {car.keyFeatures}</p>
+                                    {/* Display other car details */}
+                                    {/* You can style and format the data as needed */}
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            </div>
+
         </div>
+
     );
 };
 

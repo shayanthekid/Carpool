@@ -15,6 +15,7 @@
     "aws-amplify": "^5.2.2",
     "aws-sdk": "^2.1384.0",
     "axios": "^1.4.0",
+    "bootstrap": "^5.3.0",
     "buffer": "^6.0.3",
     "fs": "^0.0.1-security",
     "react": "^18.2.0",

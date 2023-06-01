@@ -71,7 +71,7 @@ const CreateCar = () => {
     try {
       const fileReader = new FileReader();
       fileReader.onload = async () => {
-        const binaryData = fileReader.result;
+        // const binaryData = fileReader.result;
         const fileName = `${uuidv4()}.${carImage.name.split('.').pop()}`;
         const id = uuidv4();
          
@@ -127,121 +127,148 @@ const CreateCar = () => {
   };
 
   return (
-    <div>
-      <h1>Add Car Details</h1>
+    <div className="container">
+      <h1 className="text-center">Add Car Details</h1>
+      <div className="row justify-content-center">
+        <div className="col-md-6">
       <form onSubmit={handleSubmit} encType="multipart/form-data">
-        <label htmlFor="car_name">Car Name:</label>
-        <input
-          type="text"
-          name="car_name"
-          id="car_name"
-          value={carName}
-          onChange={handleCarNameChange}
-          required
-        /><br /><br />
+        <div className="mb-3">
+          <label htmlFor="car_name" className="form-label">Car Name:</label>
+          <input
+            type="text"
+            className="form-control"
+            name="car_name"
+            id="car_name"
+            value={carName}
+            onChange={handleCarNameChange}
+            required
+          />
+        </div>
 
-        <label htmlFor="year">Year:</label>
-        <input
-          type="text"
-          name="year"
-          id="year"
-          value={year}
-          onChange={handleYearChange}
-          pattern="[0-9]*" // Only allow numeric input
-          required
-        /><br /><br />
+        <div className="row g-2">
+          <div className="col-md">
+            <label htmlFor="year" className="form-label">Year:</label>
+            <input
+              type="text"
+              className="form-control"
+              name="year"
+              id="year"
+              value={year}
+              onChange={handleYearChange}
+              pattern="[0-9]*" // Only allow numeric input
+              required
+            />
+          </div>
+          <div className="col-md">
+            <label htmlFor="price" className="form-label">Price:</label>
+            <input
+              type="text"
+              className="form-control"
+              name="price"
+              id="price"
+              value={price}
+              onChange={handlePriceChange}
+              required
+            />
+          </div>
+        </div>
 
-        <label htmlFor="price">Price:</label>
-        <input
-          type="text"
-          name="price"
-          id="price"
-          value={price}
-          onChange={handlePriceChange}
-          required
-        /><br /><br />
+        <div className="mb-3">
+          <label htmlFor="brand" className="form-label">Brand:</label>
+          <select className="form-select" name="brand" id="brand" value={brand} onChange={handleBrandChange} required>
+            <option value="">Select a brand</option>
+            <option value="Toyota">Toyota</option>
+            <option value="Honda">Honda</option>
+            <option value="Ford">Ford</option>
+            <option value="Chevrolet">Chevrolet</option>
+            <option value="BMW">BMW</option>
+            <option value="Mercedes-Benz">Mercedes-Benz</option>
+            <option value="Audi">Audi</option>
+            <option value="Nissan">Nissan</option>
+            <option value="Tesla">Tesla</option>
+            <option value="Volkswagen">Volkswagen</option>
+          </select>
+        </div>
 
-        <label htmlFor="brand">Brand:</label>
-        <select name="brand" id="brand" value={brand} onChange={handleBrandChange} required>
-          <option value="">Select a brand</option>
-          <option value="Toyota">Toyota</option>
-          <option value="Honda">Honda</option>
-          <option value="Ford">Ford</option>
-          <option value="Chevrolet">Chevrolet</option>
-          <option value="BMW">BMW</option>
-          <option value="Mercedes-Benz">Mercedes-Benz</option>
-          <option value="Audi">Audi</option>
-          <option value="Nissan">Nissan</option>
-          <option value="Tesla">Tesla</option>
-          <option value="Volkswagen">Volkswagen</option>
-        </select>
-        <br /><br />
+        <div className="row g-2">
+          <div className="col-md">
+            <label htmlFor="seat_layout" className="form-label">Seat Layout:</label>
+            <select className="form-select" name="seat_layout" id="seat_layout" value={seatLayout} onChange={handleSeatLayoutChange} required>
+              <option value="">Select seat layout</option>
+              <option value="2">2</option>
+              <option value="4">4</option>
+            </select>
+          </div>
+          <div className="col-md">
+            <label htmlFor="exterior_color" className="form-label">Exterior Color:</label>
+            <select className="form-select" name="exterior_color" id="exterior_color" value={exteriorColor} onChange={handleExteriorColorChange} required>
+              <option value="">Select exterior color</option>
+              <option value="Red">Red</option>
+              <option value="Blue">Blue</option>
+              <option value="Black">Black</option>
+              <option value="White">White</option>
+              <option value="Silver">Silver</option>
+              {/* Add more popular car colors as options */}
+            </select>
+          </div>
+        </div>
 
-        <label htmlFor="seat_layout">Seat Layout:</label>
-        <select name="seat_layout" id="seat_layout" value={seatLayout} onChange={handleSeatLayoutChange} required>
-          <option value="">Select seat layout</option>
-          <option value="2">2</option>
-          <option value="4">4</option>
-        </select>
-        <br /><br />
+        <div className="row g-2">
+          <div className="col-md">
+            <label htmlFor="interior_color" className="form-label">Interior Color:</label>
+            <select className="form-select" name="interior_color" id="interior_color" value={interiorColor} onChange={handleInteriorColorChange} required>
+              <option value="">Select interior color</option>
+              <option value="Beige">Beige</option>
+              <option value="Black">Black</option>
+              <option value="Gray">Gray</option>
+              <option value="White">White</option>
+              <option value="Brown">Brown</option>
+              {/* Add more popular car colors as options */}
+            </select>
+          </div>
+          <div className="col-md">
+            <label htmlFor="wheels" className="form-label">Wheels:</label>
+            <select className="form-select" name="wheels" id="wheels" value={wheels} onChange={handleWheelsChange} required>
+              <option value="">Select number of wheels</option>
+              <option value="2">2</option>
+              <option value="4">4</option>
+            </select>
+          </div>
+        </div>
 
-        <label htmlFor="exterior_color">Exterior Color:</label>
-        <select name="exterior_color" id="exterior_color" value={exteriorColor} onChange={handleExteriorColorChange} required>
-          <option value="">Select exterior color</option>
-          <option value="Red">Red</option>
-          <option value="Blue">Blue</option>
-          <option value="Black">Black</option>
-          <option value="White">White</option>
-          <option value="Silver">Silver</option>
-          {/* Add more popular car colors as options */}
-        </select>
-        <br /><br />
+        <div className="mb-3">
+          <label htmlFor="key_features" className="form-label">Key Features:</label>
+          <input
+            type="text"
+            className="form-control"
+            name="key_features"
+            id="key_features"
+            value={keyFeatures}
+            onChange={handleKeyFeaturesChange}
+            required
+          />
+        </div>
 
-        <label htmlFor="interior_color">Interior Color:</label>
-        <select name="interior_color" id="interior_color" value={interiorColor} onChange={handleInteriorColorChange} required>
-          <option value="">Select interior color</option>
-          <option value="Beige">Beige</option>
-          <option value="Black">Black</option>
-          <option value="Gray">Gray</option>
-          <option value="White">White</option>
-          <option value="Brown">Brown</option>
-          {/* Add more popular car colors as options */}
-        </select>
-        <br /><br />
+        <div className="mb-3">
+          <label htmlFor="car_image" className="form-label">Car Image:</label>
+          <input
+            type="file"
+            className="form-control"
+            name="car_image"
+            id="car_image"
+            onChange={handleCarImageChange}
+            required
+          />
+        </div>
 
-        <label htmlFor="wheels">Wheels:</label>
-        <select name="wheels" id="wheels" value={wheels} onChange={handleWheelsChange} required>
-          <option value="">Select number of wheels</option>
-          <option value="2">2</option>
-          <option value="4">4</option>
-        </select>
-        <br /><br />
-
-        <label htmlFor="key_features">Key Features:</label>
-        <input
-          type="text"
-          name="key_features"
-          id="key_features"
-          value={keyFeatures}
-          onChange={handleKeyFeaturesChange}
-          required
-        /><br /><br />
-
-        <label htmlFor="car_image">Car Image:</label>
-        <input
-          type="file"
-          name="car_image"
-          id="car_image"
-          onChange={handleCarImageChange}
-          required
-        /><br /><br />
-
-        <input type="submit" value="Submit" />
+        <input type="submit" className="btn btn-primary" value="Submit" />
       </form>
-
-      <CarList layout="car-card" refresh={refreshCarList} />
-
+</div>
+</div>
+      <CarList layout="table" refresh={refreshCarList} />
     </div>
+
+
   );
 };
 
