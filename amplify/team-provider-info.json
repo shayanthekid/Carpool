@@ -53,6 +53,10 @@
         "UpdateCarDetails": {
           "deploymentBucketName": "amplify-carpool-sajiddesk-185911-deployment",
           "s3Key": "amplify-builds/UpdateCarDetails-4b424f574135614a396d-build.zip"
+        },
+        "GenerateReport": {
+          "deploymentBucketName": "amplify-carpool-sajiddesk-185911-deployment",
+          "s3Key": "amplify-builds/GenerateReport-646f734d76385039474e-build.zip"
         }
       },
       "auth": {

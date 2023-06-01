@@ -31,6 +31,11 @@
       "providerPlugin": "awscloudformation",
       "service": "Lambda"
     },
+    "GenerateReport": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    },
     "GetAllCars": {
       "build": true,
       "providerPlugin": "awscloudformation",
@@ -66,6 +71,22 @@
         {
           "category": "function",
           "resourceName": "DeleteCarRecord"
+        }
+      ]
+    },
+    "AMPLIFY_function_GenerateReport_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "GenerateReport"
+        }
+      ]
+    },
+    "AMPLIFY_function_GenerateReport_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "GenerateReport"
         }
       ]
     },
