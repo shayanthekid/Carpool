@@ -76,6 +76,34 @@ const CreateCar = () => {
   const handleBrandChange = (e) => {
     setBrand(e.target.value);
   };
+
+  const handleReport = async() =>{
+   
+    try {
+    const lambdaResponse = await axios.post('https://w0a5xhvof8.execute-api.us-east-1.amazonaws.com/desk/report');
+    console.log(lambdaResponse.data);
+    const MySwal6 = withReactContent(Swal)
+
+      MySwal6.fire({
+        title: <strong>Report generated</strong>,
+       
+        icon: 'success'
+      })
+    } catch (error) {
+
+      const MySwal5 = withReactContent(Swal)
+
+      MySwal5.fire({
+        title: <strong>Report not generated</strong>,
+        html: <i>{error}</i>,
+        icon: 'error'
+      })
+      console.error(error);
+      // Handle the error
+    }
+
+  }
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -295,6 +323,11 @@ const CreateCar = () => {
 </div>
 </div>
       <CarList layout="table" refresh={refreshCarList} />
+
+        <h1 className="text-center text-white">Generate report</h1>
+        <button className="btn btn-primary" onClick={() => handleReport()}>
+          Generate report
+        </button>
     </div>
 
     </div>
@@ -302,5 +335,5 @@ const CreateCar = () => {
 };
 
 export default withAuthenticator(CreateCar, {
-
+  hideSignUp: true,
 });

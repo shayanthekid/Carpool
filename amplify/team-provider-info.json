@@ -56,7 +56,7 @@
         },
         "GenerateReport": {
           "deploymentBucketName": "amplify-carpool-sajiddesk-185911-deployment",
-          "s3Key": "amplify-builds/GenerateReport-646f734d76385039474e-build.zip"
+          "s3Key": "amplify-builds/GenerateReport-6b30756a6232772b3170-build.zip"
         }
       },
       "auth": {
