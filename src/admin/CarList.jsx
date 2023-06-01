@@ -2,6 +2,8 @@ import React, { useEffect, useState, useMemo } from 'react';
 import PropTypes from 'prop-types';
 import axios from 'axios';
 import '../CarCard.css';
+import Swal from 'sweetalert2';
+import withReactContent from 'sweetalert2-react-content';
 
 const CarList = ({ layout }) => {
     const [cars, setCars] = useState([]);
@@ -49,9 +51,20 @@ const CarList = ({ layout }) => {
                 return updatedFields;
             });
 
+            const MySwal3 = withReactContent(Swal)
+            MySwal3.fire({
+                title: <strong>Failed to delete car record</strong>,
+                icon: 'success'
+            })
+
             console.log('Car record updated successfully');
         } catch (error) {
             // Handle the error
+            const MySwal4 = withReactContent(Swal)
+            MySwal4.fire({
+                title: <strong>Failed to delete car record</strong>,
+                icon: 'error'
+            })
             console.error('Failed to update car record:', error);
             console.log(car);
         }
@@ -66,7 +79,18 @@ const CarList = ({ layout }) => {
             
             setCars((prevCars) => prevCars.filter((car) => car.id !== carId));
             console.log('Car record deleted successfully');
+            const MySwal = withReactContent(Swal)
+
+            MySwal.fire({
+                title: <strong>Car record deleted successfully</strong>,
+                icon: 'success'
+            })
         } catch (error) {
+            const MySwal2 = withReactContent(Swal)
+            MySwal2.fire({
+                title: <strong>Failed to delete car record</strong>,
+                icon: 'error'
+            })
             // Handle the error
             console.error('Failed to delete car record:', error);
         }

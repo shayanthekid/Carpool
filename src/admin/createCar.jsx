@@ -2,6 +2,9 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { v4 as uuidv4 } from 'uuid';
 import CarList from './CarList';
+import Swal from 'sweetalert2';
+import withReactContent from 'sweetalert2-react-content';
+
 
 const CreateCar = () => {
   const [carName, setCarName] = useState('');
@@ -120,7 +123,24 @@ const CreateCar = () => {
       setInteriorColor('');
       setWheels('');
       setKeyFeatures('');
+    
+    
+      const MySwal = withReactContent(Swal)
+
+      MySwal.fire({
+        title: <strong>Car created!</strong>,        
+        icon: 'success'
+      })
+    
     } catch (error) {
+
+      const MySwal2 = withReactContent(Swal)
+
+      MySwal2.fire({
+        title: <strong>Car Not created</strong>,
+        html: <i>{error}</i>,
+        icon: 'error'
+      })
       console.error(error);
       // Handle the error
     }
