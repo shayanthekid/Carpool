@@ -11,6 +11,9 @@ const CarList = ({ layout }) => {
     const [filterBrand, setFilterBrand] = useState('');
     const [filterStartYear, setFilterStartYear] = useState('');
     const [filterEndYear, setFilterEndYear] = useState('');
+    const [filterCarName, setFilterCarName] = useState('');
+    const [filterMinPrice, setFilterMinPrice] = useState('');
+    const [filterMaxPrice, setFilterMaxPrice] = useState('');
     const handleUpdate = (carId) => {
         setEditableFields((prevState) => ({
             ...prevState,
@@ -29,9 +32,19 @@ const CarList = ({ layout }) => {
                     return false;
                 }
             }
+            if (filterCarName && !car.car_Name.toLowerCase().includes(filterCarName.toLowerCase())) {
+                return false;
+            }
+            if (filterMinPrice && filterMaxPrice) {
+                const minPrice = parseFloat(filterMinPrice);
+                const maxPrice = parseFloat(filterMaxPrice);
+                if (car.price < minPrice || car.price > maxPrice) {
+                    return false;
+                }
+            }
             return true;
         });
-    }, [cars, filterBrand, filterStartYear, filterEndYear]);
+    }, [cars, filterBrand, filterStartYear, filterEndYear, filterCarName, filterMinPrice, filterMaxPrice]);
 
 
     const handleSave = async (car) => {
@@ -360,7 +373,44 @@ const CarList = ({ layout }) => {
                     </div>
                 </div>
             </div>
+            <div className="row">
+                <div className="col-md-6 offset-md-3">
+                    <div className="form-group">
+                        <label>Car Name:</label>
+                        <input
+                            type="text"
+                            className="form-control"
+                            placeholder="Enter Car Name"
+                            value={filterCarName}
+                            onChange={(e) => setFilterCarName(e.target.value)}
+                        />
+                    </div>
+                </div>
+            </div>
 
+            <div className="row">
+                <div className="col-md-6 offset-md-3">
+                    <div className="form-group">
+                        <label>Price Range:</label>
+                        <div className="d-flex">
+                            <input
+                                type="text"
+                                className="form-control mr-2"
+                                placeholder="Min Price"
+                                value={filterMinPrice}
+                                onChange={(e) => setFilterMinPrice(e.target.value)}
+                            />
+                            <input
+                                type="text"
+                                className="form-control"
+                                placeholder="Max Price"
+                                value={filterMaxPrice}
+                                onChange={(e) => setFilterMaxPrice(e.target.value)}
+                            />
+                        </div>
+                    </div>
+                </div>
+            </div>
             <div className="row">
                 <div className="col-md-6 offset-md-3">
                     <div className="form-group">
