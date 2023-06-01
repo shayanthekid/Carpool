@@ -3,9 +3,17 @@ import axios from 'axios';
 import { v4 as uuidv4 } from 'uuid';
 import CarList from './CarList';
 import Swal from 'sweetalert2';
+import { withAuthenticator } from '@aws-amplify/ui-react';
 import withReactContent from 'sweetalert2-react-content';
 
+import { useAuthenticator, Heading } from '@aws-amplify/ui-react';
+export function Protected() {
+  const { route } = useAuthenticator((context) => [context.route]);
 
+  const message =
+    route === 'authenticated' ? 'FIRST PROTECTED ROUTE!' : 'Loading...';
+  return <Heading level={1}>{message}</Heading>;
+}
 const CreateCar = () => {
   const [carName, setCarName] = useState('');
   const [year, setYear] = useState('');
@@ -293,4 +301,6 @@ const CreateCar = () => {
   );
 };
 
-export default CreateCar;
+export default withAuthenticator(CreateCar, {
+
+});

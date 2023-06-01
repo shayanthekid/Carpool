@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { CognitoUser, AuthenticationDetails, CognitoUserPool } from 'amazon-cognito-identity-js';
 import Modal from 'react-modal';
 import { Link } from 'react-router-dom';
+import { withAuthenticator } from '@aws-amplify/ui-react';
 import { Amplify } from 'aws-amplify';
 
 import { Authenticator } from '@aws-amplify/ui-react';
@@ -76,4 +77,6 @@ const AdminLogin = () => {
     );
 };
 
-export default AdminLogin;
+export default withAuthenticator(AdminLogin, {
+    hideSignUp: true,
+});
