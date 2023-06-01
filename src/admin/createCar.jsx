@@ -325,7 +325,7 @@ const CreateCar = () => {
       <CarList layout="table" refresh={refreshCarList} />
 
         <h1 className="text-center text-white">Generate report</h1>
-        <button className="btn btn-primary" onClick={() => handleReport()}>
+        <button className="btn btn-primary text-center" onClick={() => handleReport()}>
           Generate report
         </button>
     </div>
