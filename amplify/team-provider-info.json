@@ -64,6 +64,9 @@
       },
       "storage": {
         "carimages": {}
+      },
+      "hosting": {
+        "S3AndCloudFront": {}
       }
     }
   }

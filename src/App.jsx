@@ -24,6 +24,7 @@ function App() {
               <Route path="/admin/cars" element={<CreateCar />} />
               <Route path="/store" element={<Store />} />
               <Route path="/home" element={<Landing />} />
+              <Route path="/" element={<Landing />} />
              
             </Routes>
           </div>
